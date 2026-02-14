@@ -3,7 +3,7 @@ console.log("Hello World!\n==========\n");
 // Exercise 1 Section
 console.log("EXERCISE 1:\n==========\n");
 console.log("printing odd numbers between 1 & 100");
-for (let i = 1; i < 100; i++ )
+for (let i = 1; i <= 100; i++ )
 {
 	if ( i % 2 != 0 )
 	{
@@ -14,86 +14,91 @@ for (let i = 1; i < 100; i++ )
 // Exercise 2 Section
 console.log("EXERCISE 2:\n==========\n");
 console.log("Fizz Buzz exercise. Find numbers divisible by 3 and/or 5");
-for ( i = 1; i <= 100; i++ )
-{
-	wordToPrint = "";
 
+for ( let i = 1; i <= 100; i++ )
+{
+	let wordToPrint = "";
 	if ( i % 3 == 0 )
 	{
-		wordToPrint = "FÌZZ";
-	}
+		wordToPrint = "FIZZ";
+    }
 	if ( i % 5 == 0 )
 	{
 		wordToPrint += "BUZZ";
-	}
-	if ( wordToPrint != "" )
-	{
-		console.log("number ", i, "equals", wordToPrint);
-	}
+    }
+	if ( wordToPrint != "" ) 
+    {
+        console.log(`${wordToPrint}, ${i}`);
+    }
 }
 
 // Exercise 3a Section
 console.log("EXERCISE 3a:\n==========\n");
 console.log("Fizz Buzz exercise with while. Find numbers divisible by 3 and/or 5");
-i = 1;
-while ( i++ <= 100 )
+let j = 1;
+while ( j <= 100 )
 {
-	wordToPrint = "";
-
-	if ( i % 3 == 0 )
+	if ( j % 15 == 0 )
 	{
-		wordToPrint = "FÌZZ";
+		console.log(`FIZZBUZZ, ${j}`);
 	}
-	if ( i % 5 == 0 )
+	else if ( j % 5 == 0 )
 	{
-		wordToPrint += "BUZZ";
+		console.log(`BUZZ, ${j}`);
 	}
-	if ( wordToPrint != "" )
+	else if ( j % 3 == 0 )
 	{
-		console.log("number ", i, "equals", wordToPrint);
+		console.log(`FIZZ, ${j}`);
 	}
+	j++;
 }
 
 // Exercise 3b Section
 console.log("EXERCISE 3b:\n==========\n");
 console.log("Fizz Buzz exercise with do/while. Find numbers divisible by 3 and/or 5");
-i = 1;
+let i = 1;
+
 do
 {
-	wordToPrint = "";
+    if ( i % 15 == 0 )
+    {
+        console.log(`FIZZBUZZ, ${i}`);
+    }
+    else if ( i % 5 == 0 )
+    {
+        console.log(`BUZZ, ${i}`);
+    }
+    else if ( i % 3 == 0 )
+    {
+        console.log(`FIZZ, ${i}`);
+    }
+    i++;
 
-	if ( i % 3 == 0 )
-	{
-		wordToPrint = "FÌZZ";
-	}
-	if ( i % 5 == 0 )
-	{
-		wordToPrint += "BUZZ";
-	}
-	if ( wordToPrint != "" )
-	{
-		console.log("number ", i, "equals", wordToPrint);
-	}
-} while ( ++i < 100 );
+} while ( i <= 100 );
 
 // Exercise 4 Section
 console.log("EXERCISE 4:\n==========\n");
 console.log("Find our given random number if it's between 100 and 500");
 
-let value = Math.round((Math.random() * 500)); // creates a random number between 0 and 500
-let n = Math.round(Math.random() * (500 - 100) + 100); // creates a random number between 100 and 500
+// creates a random number between 0 and 500
+let value = Math.round((Math.random() * 500));
 
-for ( i = 0; i < n; i++ )
+// creates a random number between 100 and 500
+let n = Math.round(Math.random() * (500 - 100) + 100); 
+
+let found = false;
+for ( let i = 0; i <= n; i++ )
 {
 	if ( value == i )
 	{
-		console.log("Our random number", value, " was found!");
+		found = true;
+		console.log(`Our random number, ${value}, was found!`);
 		break;
 	}
 }
-if ( value != n ) 
+if ( !found ) 
 {
-	console.log("Did not find value = ", value, "n = ", n);
+	console.log(`Did not find value = ${value}, n = ${n}`);
 }
 
 // Exercise 5 Section
@@ -105,21 +110,18 @@ let buzzDivisor = Math.round(Math.random() * (10 - 1) + 1);
 n = Math.round(Math.random() * (1000 - 1) + 1);
 let start = Math.round(Math.random() * (10 - 1) + 1);
 
-for ( i = start; i <= n; i++ )
+for ( ; start <= n; start++ )
 {
-	if ( i % fizzDivisor == 0 && i % buzzDivisor )
+	if ( start % fizzDivisor == 0 && start % buzzDivisor == 0 )
 	{
-		console.log("FIZZBUZZ, ", "start = ", start, " n = ", n, "fizzDivisor = ", fizzDivisor, " buzzDivisor = ", buzzDivisor);
+		console.log(`FIZZBUZZ, start = ${start}, n = ${n}, fizzDivisor = ${fizzDivisor}, buzzDivisor = ${buzzDivisor}`);
 	}
-	else if ( i % fizzDivisor == 0 )
+	else if ( start % fizzDivisor == 0 )
 	{
-		console.log("FIZZ, ", "start = ", start, " n = ", n, "fizzDivisor = ", fizzDivisor, " buzzDivisor = ", buzzDivisor);
-		// console.log("FIZZ");
+		console.log(`FIZZ, start = ${start}, n = ${n}, fizzDivisor = ${fizzDivisor}, buzzDivisor = ${buzzDivisor}`);
 	}
-	else if ( i % buzzDivisor == 0 )
+	else if ( start % buzzDivisor == 0 )
 	{
-		console.log("BUZZ, ", "start = ", start, " n = ", n, 
-			"fizzDivisor = ", fizzDivisor, " buzzDivisor = ", buzzDivisor);
-		//console.log("BUZZ");
+		console.log(`BUZZ, start = ${start}, n = ${n}, fizzDivisor = ${fizzDivisor}, buzzDivisor = ${buzzDivisor}`);
 	}
 }
